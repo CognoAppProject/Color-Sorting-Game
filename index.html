@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Color Sorting Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="instruction-modal" class="modal">
+    <div class="modal-content">
+      <h2>Color Sorting Game</h2>
+      <p>Drag each color block from above to its matching container.</p>
+      <button onclick="startGame()">Start Game</button>
+    </div>
+  </div>
+
+  <h1>Color Sorting Game</h1>
+  <p id="level-display">Level: 1</p>
+
+  <div class="game-container">
+    <div id="color-blocks" class="color-blocks"></div>
+    <div id="color-targets" class="color-targets"></div>
+  </div>
+
+  <button id="next-level-btn" onclick="nextLevel()">Next Level</button>
+
+  <div id="final-screen" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2>🎉 Great Job!</h2>
+      <p>You finished all the levels!</p>
+      <button onclick="restartGame()">Play Again</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
