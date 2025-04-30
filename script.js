@@ -42,9 +42,7 @@ function loadLevel() {
   blockContainer.innerHTML = '';
   targetContainer.innerHTML = '';
 
-  // Always limit the number of colors to avoid slicing beyond array length
   const numberOfColors = Math.min(level + 2, colors.length);
-
   const currentColors = colors.slice(0, numberOfColors);
   const shuffledColors = [...currentColors].sort(() => Math.random() - 0.5);
 
@@ -56,7 +54,6 @@ function loadLevel() {
     block.dataset.color = color;
 
     block.addEventListener('dragstart', e => {
-      // Prevent dragging if already placed
       if (block.classList.contains('placed')) {
         e.preventDefault();
       } else {
@@ -119,6 +116,12 @@ function endGame() {
   document.getElementById('final-time').textContent = `Time Taken: ${timeTaken} seconds`;
   document.getElementById('final-screen').style.display = 'flex';
   document.getElementById('next-level-btn').style.display = 'none';
+
+  // Submit result to Android
+  if (window.Android && Android.submitResult) {
+    Android.submitResult("Color Sorting Game", score, timeTaken);
+    console.log("Result submitted to Android:", score, timeTaken);
+  }
 }
 
 function restartGame() {
